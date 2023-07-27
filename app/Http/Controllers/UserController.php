@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index() // * Shows all departments
+    public function index() // * Shows all users
     {
         return User::all();
-        // TODO: Should return a view with options to manage the departments, this is for testing only
+        // TODO: Should return a view with options to manage the users, this is for testing only
     }
 
     public function show(int $id) // * Shows specific department using the given department id
@@ -25,8 +26,28 @@ class UserController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function store(Request $request, int $id)
     {
-        dd(User::find($id));
+
+        // dd($request);
+        $request->validate(
+            [
+                'name' => ['required'],
+                'email' => ['email'],
+            ]
+        );
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function destroy(Request $request, int $id)
+    {
+        User::destroy($id);
+        return redirect()->route('admin.dashboard')->withErrors($request, 'success');
+
     }
 }

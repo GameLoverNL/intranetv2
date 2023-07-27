@@ -57,9 +57,8 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
         // * Gets a single user
         Route::get('/{id}', 'show')->name('admin.user.show');
 
-
-        // * Updates a users
-        Route::get('/{id}/edit', 'update')->name('admin.user.edit');
+        // * Updates a user (back-end)
+        Route::put('/{id}/edit', 'store')->name('admin.user.edit');
 
     });
 
