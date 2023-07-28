@@ -22,11 +22,12 @@
                                 <div class="flex-1 bg-gray-400 p-2 m-1 shadow-lg shadow-gray-500 rounded-lg">
                                     <div class="flex flex-col p-1 flex-wrap">
                                         <a class="rounded-lg text-gray-900 font-semibold bg-blue-300 shadow-md shadow-blue-400 text-center p-1 m-1" href="{{ route('admin.user.show', ['id' => $user->id]) }}">Show</a>
-                                        <a class="rounded-lg text-gray-900 font-semibold bg-red-300 shadow-md shadow-red-400 text-center p-1 m-1" href="{{ route('admin.user.edit', ['id' => $user->id]) }}">Delete</a>
+                                        <button class="rounded-lg text-gray-900 font-semibold bg-red-300 shadow-md shadow-red-400 text-center p-1 m-1">Delete</button>
+                                        {{-- <button class="rounded-lg text-gray-900 font-semibold bg-red-300 shadow-md shadow-red-400 text-center p-1 m-1" x-data="" x-on:click.prevent="$dispatch('open-modal', 'deletion-confirmation')">Delete</button> --}}
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                            @endforeach
                     </div>
                     <div class="m-2">{{ $users->links() }}</div>
                 </div>

@@ -23,6 +23,7 @@
 
                             <div>
 
+                                {{-- Profile editor --}}
                                 <form class="p-2 m-2 shadow-xl shadow-gray-900 rounded-xl border-2 border-gray-700" action="{{ route('admin.user.edit', ['id' => $user->id]) }}" method="POST">
                                     @csrf
                                     @method('PUT')
@@ -34,6 +35,22 @@
                                         <button class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" type="submit">Submit</button>
                                     </div>
                                 </form>
+
+                                <div>
+                                    <button class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" x-data="" x-on:click.prevent="$dispatch('open-modal', 'department-modal')">Open modal</button>
+                                    <x-modal focusable name="department-modal" class="py-12">
+                                        <div class="p-4">
+                                            <h3 class="text-xl font-semibold text-gray-100">Department</h3>
+                                        </div>
+
+                                        <div>
+                                            <form action="{{ route('admin.user.show', ['id' => $user->id ]) }}">
+                                                <input type="text" name="user_search">
+                                                <button type="submit">Search</button>
+                                            </form>
+                                        </div>
+                                    </x-modal>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -50,9 +50,7 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::controller(UserController::class)->prefix('user')->group(function () {
 
         // * Gets all the users
-        Route::get('/', function() {
-            dd(\App\Models\User::all());
-        });
+        Route::get('/', 'index');
 
         // * Gets a single user
         Route::get('/{id}', 'show')->name('admin.user.show');

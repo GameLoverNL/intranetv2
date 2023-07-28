@@ -25,8 +25,20 @@
 ## TODO
 
 - ### Admin - User management
-    - Create the form to edit user information and style it
-        - Switch the form and inputs over to components to easily re-use the form elements
+    - User editor
+        - Form
+            - Username (changeable) (*done*)
+            - Email (changeable) (*done*)
+            - Department (select from list)
+                - Using Laravel Scout, search for the department in a real-time list using the Meilisearch engine
+            - Create the form to edit user information and style it (*done*)
+                - Switch the form and inputs over to components to easily re-use the form elements (*later stage*)
+        - Password reset
+            - Admins should be able to reset the password
+                - Send the user a magic link to set up their new password
+        - Deletion
+            - Modal
+                - Modal is looping in foreach, user information should be sent using alpinejs(?)
 - ### Admin - Department management
     - Department editor
         - Department name (changeable)
@@ -55,3 +67,17 @@
     - Caddy/Nginx/Apache
     - *Bitnami/laravel*
 
+## Progress
+*This section will give a list of all the things that have been done with the date and commit message*
+
+- 27-07-2023
+    - Added basic user functionality, you can now;
+        - Show the user
+        - Edit user information
+            - Username
+            - Email
+        - Delete the user
+
+- 28-07-2023
+    - Small updates to the project
+        - Added Laravel Scout, but this is not yet used

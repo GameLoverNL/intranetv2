@@ -10,11 +10,10 @@ class UserController extends Controller
 {
     public function index() // * Shows all users
     {
-        return User::all();
-        // TODO: Should return a view with options to manage the users, this is for testing only
+        // return User::search('Jori')->get();
     }
 
-    public function show(int $id) // * Shows specific department using the given department id
+    public function show(Request $request, int $id) // * Shows specific department using the given department id
     {
         $user = User::find($id);
         if (!$user) {
