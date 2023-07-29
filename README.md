@@ -41,10 +41,10 @@
                 - Modal is looping in foreach, user information should be sent using alpinejs(?)
 - ### Admin - Department management
     - Department editor
-        - Department name (changeable)
+        - Department name (changeable) (*done*)
         - Manager | Select a member (with search) using a modal
         - Member count | Total members of the department (*later also their function/role*)
-        - Applications | On or off (checkbox/toggle)
+        - Applications | On or off (checkbox/toggle) (*current*)
         - Optional: notify manager with an email that there have been made changes to the department
 
 - ### Public service announcements
@@ -81,3 +81,13 @@
 - 28-07-2023
     - Small updates to the project
         - Added Laravel Scout, but this is not yet used
+
+- 29-07-2023
+    - Fixes to the models and database seeder
+        - Finally fixed the annoying bug which was causing the database seeder to not be able to seed
+            - I wanted to create a user that has a linked department, but from 2 different factories this was not really possible
+            - Solution
+                - The solution I used now might not be the best one, but it works!
+                    - In the department factory, I've added a configure method which returns the factory after creation, this then takes in the user factory associated with the manager id for the department factory, finds the user with the manager_id and adds the department to the user model from the made department factory.
+                    - Long story short; it now works :D
+                - For more information, see the `Database/seeders/DatabaseSeeder.php` file, and the `Database/factories/DepartmentFactory.php` file. Here you can see the changes and how it works now.

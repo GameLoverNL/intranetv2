@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
     public function index() // * Shows all users
     {
         // return User::search('Jori')->get();
+        dd(User::all());
     }
 
     public function show(Request $request, int $id) // * Shows specific department using the given department id
@@ -48,5 +50,16 @@ class UserController extends Controller
         User::destroy($id);
         return redirect()->route('admin.dashboard')->withErrors($request, 'success');
 
+    }
+
+    public function passwordReset(int $id)
+    {
+        $user = User::find($id);
+        $status = Password::sendResetLink(['email' => $user->email]);
+        return $status === Password::RESET_LINK_SENT ? back()->with(['status' => __($status)]) : back()->withErrors(['email' => __($status)]);
+    }
+    public function handlePasswordReset(Request $request)
+    {
+        
     }
 }

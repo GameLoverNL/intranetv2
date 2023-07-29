@@ -11,7 +11,7 @@
                 <div class="p-4">
                     <div class="text-center">
                         <h3 class="text-2xl font-bold text-gray-100">{{ $user->name }}</h3>
-                        <h4 class="text-lg font-medium text-gray-200">Department</h4>
+                        <h4 class="text-lg font-medium text-gray-200">{{ $user->department->name }}</h4>
                     </div>
                     <div class="p-2 border-b-2 border-gray-300"></div>
                     <div class="mx-auto text-center p-2">
@@ -35,22 +35,11 @@
                                         <button class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" type="submit">Submit</button>
                                     </div>
                                 </form>
-
-                                <div>
-                                    <button class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" x-data="" x-on:click.prevent="$dispatch('open-modal', 'department-modal')">Open modal</button>
-                                    <x-modal focusable name="department-modal" class="py-12">
-                                        <div class="p-4">
-                                            <h3 class="text-xl font-semibold text-gray-100">Department</h3>
-                                        </div>
-
-                                        <div>
-                                            <form action="{{ route('admin.user.show', ['id' => $user->id ]) }}">
-                                                <input type="text" name="user_search">
-                                                <button type="submit">Search</button>
-                                            </form>
-                                        </div>
-                                    </x-modal>
-                                </div>
+                                {{-- <form action="{{ route('admin.user.password.reset', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button class="p-2 m-2 w-full bg-red-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" type="submit">Reset password</button>
+                                </form> --}}
                             </div>
                         </div>
                     </div>

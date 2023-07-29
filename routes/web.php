@@ -58,7 +58,10 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
         // * Updates a user (back-end)
         Route::put('/{id}/edit', 'store')->name('admin.user.edit');
 
+        // Route::put('/{id}/password', 'passwordReset')->name('admin.user.password.reset');
+
     });
+
 
     // * Groups a controller to multiple routes using the same prefix for all routes
     Route::controller(DepartmentController::class)->prefix('department')->group(function () {
@@ -67,9 +70,12 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
         Route::get('/', 'index');
 
         // * Returns specific department using the given id
-        Route::get('/{id}', 'show')->name('admin.department.edit');
+        Route::get('/{id}', 'show')->name('admin.department.show');
+
+        Route::put('/{id}/edit', 'store')->name('admin.department.edit');
+
+        Route::delete('/{id}/destroy', 'destroy')->name('admin.department.destroy');
 
     });
 });
-
 require __DIR__.'/auth.php';

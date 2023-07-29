@@ -17,7 +17,8 @@
                                 <div class="flex-1 bg-gray-200 p-2 m-1 shadow-lg shadow-gray-500 rounded-lg">
                                     <p>{{ $user->id }}</p>
                                     <p>{{ $user->name }}</p>
-                                    <p>Department</p>
+                                    <p>{{ $user->department->name }}</p>
+                                    {{-- ! TODO: Department name not yet working because the database seeder is not working, W.I.P.! --}}
                                 </div>
                                 <div class="flex-1 bg-gray-400 p-2 m-1 shadow-lg shadow-gray-500 rounded-lg">
                                     <div class="flex flex-col p-1 flex-wrap">
@@ -36,14 +37,14 @@
                         @foreach ($departments as $department)
                             <div class="flex flex-row p-2">
                                 <div class="flex-1 bg-gray-200 p-2 m-1 shadow-lg shadow-gray-500 rounded-lg">
-                                    <p>{{ $department->id }}</p>
-                                    <p>{{ $department->name }}</p>
-                                    <p>Manager</p>
+                                    <p class="font-semibold">{{ $department->id }}</p>
+                                    <p class="text-lg font-semibold">{{ $department->name }}</p>
+                                    <p class="italic">{{ $department->manager->name }}</p>
                                 </div>
                                 <div class="flex-1 bg-gray-400 p-2 m-1 shadow-lg shadow-gray-500 rounded-lg">
                                     <div class="flex flex-col p-1 flex-wrap">
-                                        <a class="rounded-lg text-gray-900 font-semibold bg-blue-300 shadow-md shadow-blue-400 text-center p-1 m-1" href="{{ route('admin.department.edit', ['id' => $department->id]) }}">Show</a>
-                                        <a class="rounded-lg text-gray-900 font-semibold bg-red-300 shadow-md shadow-red-400 text-center p-1 m-1" href="{{ route('admin.department.edit', ['id' => $department->id]) }}">Delete</a>
+                                        <a class="rounded-lg text-gray-900 font-semibold bg-blue-300 shadow-md shadow-blue-400 text-center p-1 m-1" href="{{ route('admin.department.show', ['id' => $department->id]) }}">Show</a>
+                                        <a class="rounded-lg text-gray-900 font-semibold bg-red-300 shadow-md shadow-red-400 text-center p-1 m-1" href="{{ route('admin.department.destroy', ['id' => $department->id]) }}">Delete</a>
                                     </div>
                                 </div>
                             </div>

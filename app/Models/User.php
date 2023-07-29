@@ -9,11 +9,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-use Laravel\Scout\Searchable;
+// use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Searchable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function department(): HasOne
     {
-        return $this->hasOne(Department::class);
+        return $this->hasOne(Department::class, 'manager_id');
     }
 }
