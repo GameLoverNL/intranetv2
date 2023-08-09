@@ -24,12 +24,17 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="flex flex-col max-w-xl gap-6 p-2 m-2 content-center">
-                                        <input type="text" value="{{ old('name', $department->name) }}" class="p-3 dark:bg-gray-700 border-none rounded-xl block shadow-md dark:shadow-gray-800 dark:text-gray-200 dark:placeholder-gray-400" name="name" />
+                                        <input type="text" x-model="department_name" value="{{ old('name', $department->name) }}" class="p-3 dark:bg-gray-700 border-none rounded-xl block shadow-md dark:shadow-gray-800 dark:text-gray-200 dark:placeholder-gray-400" name="name" />
                                         {{-- <input type="text" value="{{ old('email', $department->manager) }}" class="p-3 dark:bg-gray-700 border-none rounded-xl block shadow-md dark:shadow-gray-800 dark:text-gray-200 dark:placeholder-gray-400" name="email" /> --}}
                                         {{-- * Line 31 should be a search box linked to the user model, maybe using Inertia --}}
 
                                         {{-- ! TODO: Applications toggle (on/off), with a checkbox --}}
 
+                                        {{-- Manager selection --}}
+                                        <div x-data="{ user: '' }">
+                                            <input type="text" name="manager" id="user" x-model="user" />
+                                            {{-- TODO:  Should get a list of around 3 users per search with the ability to select a user and add them as the department manager --}}
+                                        </div>
                                     </div>
                                     <div>
                                         <button class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" type="submit">Submit</button>

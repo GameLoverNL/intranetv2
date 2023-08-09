@@ -27,6 +27,16 @@ class UserController extends Controller
         ]);
     }
 
+    // * Example usage of search function
+    // public function search(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string'
+    //     ]);
+
+    //     dd(User::search($request->name)->get());
+    // }
+
     public function store(Request $request, int $id)
     {
 
@@ -60,6 +70,6 @@ class UserController extends Controller
     }
     public function handlePasswordReset(Request $request)
     {
-        
+
     }
 }

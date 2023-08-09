@@ -52,6 +52,8 @@
                     </div>
                     <div class="m-2">{{ $departments->links() }}</div>
                 </div>
+
+
             </div>
 
         </div>

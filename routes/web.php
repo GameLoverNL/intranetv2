@@ -40,25 +40,26 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard', [
-            'users' => \App\Models\User::paginate(5, ['*'], 'user'),
-            'departments' => \App\Models\Department::paginate(5, ['*'], 'department'),
+            'users' => \App\Models\User::paginate(5, ['*'], 'user')->withQueryString(),
+            'departments' => \App\Models\Department::paginate(5, ['*'], 'department')->withQueryString(),
         ]);
     })->name('admin.dashboard');
 
 
     // * The user group, prefixed with `/user` and using middleware, `web`, `auth` and `isAdmin`
     Route::controller(UserController::class)->prefix('user')->group(function () {
-
         // * Gets all the users
         Route::get('/', 'index');
 
         // * Gets a single user
-        Route::get('/{id}', 'show')->name('admin.user.show');
+        // Route::get('/{id}', 'show')->name('admin.user.show');
 
         // * Updates a user (back-end)
         Route::put('/{id}/edit', 'store')->name('admin.user.edit');
 
         // Route::put('/{id}/password', 'passwordReset')->name('admin.user.password.reset');
+
+        Route::get('search', 'search')->name('admin.user.search');
 
     });
 

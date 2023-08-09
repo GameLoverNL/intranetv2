@@ -28,7 +28,7 @@ class DepartmentController extends Controller
     public function store(Request $request, int $id)
     {
 
-        // dd($request);
+        dd($request);
         $request->validate(
             [
                 'name' => ['required']

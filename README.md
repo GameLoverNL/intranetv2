@@ -19,6 +19,10 @@
 - ### Packages used
     - This project has been made using [Laravel](https://laravel.com/).
         <!-- * For this section, something like `spatie/markdown` should be mentioned with a link to the spatie or Github page, this rule applies for all other packages used (can also be a `packagist` link) -->
+    
+    - Other packages
+        - [Laravel Scout](https://laravel.com/docs/10.x/scout)
+        - [Meilisearch](https://www.meilisearch.com/)
 
 
 
@@ -30,7 +34,7 @@
             - Username (changeable) (*done*)
             - Email (changeable) (*done*)
             - Department (select from list)
-                - Using Laravel Scout, search for the department in a real-time list using the Meilisearch engine
+                - Using Laravel Scout, search for the department in a real-time list using the Meilisearch engine (*current*, for the user model the basics are working, for departments this is easy to add. Needs to be made as a realtime search with Livewire, `on-input` event)
             - Create the form to edit user information and style it (*done*)
                 - Switch the form and inputs over to components to easily re-use the form elements (*later stage*)
         - Password reset
@@ -38,7 +42,8 @@
                 - Send the user a magic link to set up their new password
         - Deletion
             - Modal
-                - Modal is looping in foreach, user information should be sent using alpinejs(?)
+                - Bugs
+                    - Modal is looping in foreach
 - ### Admin - Department management
     - Department editor
         - Department name (changeable) (*done*)
@@ -59,8 +64,15 @@
         - Admin can change, edit and delete PSA's
 - ### Specifics
     - Pagination
-        - Change the pagination so you can use both the user and department paginator at the same  time, see:
+        - Change the pagination so you can use both the user and department paginator at the same  time, see: (*done*)
         - [Laravel paginator docs](https://laravel.com/docs/10.x/pagination#multiple-paginator-instances-per-page)
+        - This was stupid, it was just one function that had to be added to the paginate method (`withQueryString()`), but it works now :D
+
+- ### Authorization
+    - Profile
+        - Link TeamSpeak identifier to intranet using TeamSpeak webquery
+    - Discord
+        - Link the user Discord account to the platform using the Socialite package
 
 - ### Docker containerization
     - Postgres
@@ -91,3 +103,13 @@
                     - In the department factory, I've added a configure method which returns the factory after creation, this then takes in the user factory associated with the manager id for the department factory, finds the user with the manager_id and adds the department to the user model from the made department factory.
                     - Long story short; it now works :D
                 - For more information, see the `Database/seeders/DatabaseSeeder.php` file, and the `Database/factories/DepartmentFactory.php` file. Here you can see the changes and how it works now.
+
+- 09-08-2023
+    - Bugfixes and preparation for search functions
+        - Bugfixes
+            - Pagination
+                After a vacation, working a bit on the project, I was really annoyed with the user/department paginator on the admin dashboard not working together, but now it does :D.
+        - New
+            - Search
+                - Models
+                    - User and department models are now searchable using Laravel Scout with Meilisearch

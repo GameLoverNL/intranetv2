@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/users/all', function () {
+    return \App\Models\User::all()->toArray();
+})->name('admin.user.all');
