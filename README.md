@@ -48,8 +48,9 @@
     - Department editor
         - Department name (changeable) (*done*)
         - Manager | Select a member (with search) using a modal
-        - Member count | Total members of the department (*later also their function/role*)
-        - Applications | On or off (checkbox/toggle) (*current*)
+        - Member count | Total members of the department (*later also their function/role*) (*current*)
+            - Should be added one every time someone gets added to the department, logic still needs to be figured out
+        - Applications | On or off (checkbox/toggle)
         - Optional: notify manager with an email that there have been made changes to the department
 
 - ### Public service announcements
@@ -113,3 +114,14 @@
             - Search
                 - Models
                     - User and department models are now searchable using Laravel Scout with Meilisearch
+
+
+- 13-08-2023
+    - Department admin page
+        - Added a member list to the department page, this way you'll be able to see all the members that are in that department, when you click the user you can see more information about them.
+        - Bugs
+            - Styling
+                - There is still a weird issue with the styling, this still needs to be addressed. 
+            - Logic
+                - The member count is not correct because the seeder currently just fakes a number, this should be converted into counting the users that are added to the department.
+

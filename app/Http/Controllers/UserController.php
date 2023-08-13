@@ -43,13 +43,25 @@ class UserController extends Controller
         // dd($request);
         $request->validate(
             [
-                'name' => ['required'],
+                'name' => ['required', 'string'],
                 'email' => ['email'],
+                'department' => ['string']
             ]
         );
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
+
+        // TODO: Has to be fully refactored to display all the results in the html form, where you then select the department you want
+        $department = \App\Models\Department::search($request->department)->raw();
+        // if ($department) {
+        //     foreach ($department as $dept) {
+        //         $user->department_id = $dept->id;
+        //     }
+        // }
+        // dd($department);
+
+
         $user->save();
 
         return redirect()->route('admin.dashboard');

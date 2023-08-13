@@ -34,6 +34,16 @@
                                     <div>
                                         <button class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" type="submit">Submit</button>
                                     </div>
+
+                                    {{-- <div x-data="{ department: '', open: false }">
+                                        <label class="block p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" for="department_search">Department</label>
+                                        <input type="text" name="department" x-model="department" id="department_search" x-on:click="open = ! open">
+                                        {{-- ? Not perfect, but it'll do for now --}}
+                                        <div x-show="open">
+                                            {{-- TODO: Display 3 departments which best match the given query --}}
+                                            <p class="text-lg text-gray-200" x-text="department"></p>
+                                        </div>
+                                    </div>
                                 </form>
                                 {{-- <form action="{{ route('admin.user.password.reset', $user->id) }}" method="POST">
                                     @csrf

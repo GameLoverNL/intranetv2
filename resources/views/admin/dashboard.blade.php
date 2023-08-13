@@ -39,7 +39,7 @@
                                 <div class="flex-1 bg-gray-200 p-2 m-1 shadow-lg shadow-gray-500 rounded-lg">
                                     <p class="font-semibold">{{ $department->id }}</p>
                                     <p class="text-lg font-semibold">{{ $department->name }}</p>
-                                    <p class="italic">{{ $department->manager->name }}</p>
+                                    <p class="italic">{{ $department->manager->name ?? 'No manager found' }}</p>
                                 </div>
                                 <div class="flex-1 bg-gray-400 p-2 m-1 shadow-lg shadow-gray-500 rounded-lg">
                                     <div class="flex flex-col p-1 flex-wrap">
@@ -50,7 +50,8 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="m-2">{{ $departments->links() }}</div>
+                    {{-- TODO: Should stick to the bottom of the list --}}
+                    <div>{{ $departments->links() }}</div>
                 </div>
 
 
