@@ -33,8 +33,8 @@
         - Form
             - Username (changeable) (*done*)
             - Email (changeable) (*done*)
-            - Department (select from list)
-                - Using Laravel Scout, search for the department in a real-time list using the Meilisearch engine (*current*, for the user model the basics are working, for departments this is easy to add. Needs to be made as a realtime search with Livewire, `on-input` event)
+            - Department (select from list) (*current*)
+                - See progress notes for `14-08-2023` to see how this can be implemented
             - Create the form to edit user information and style it (*done*)
                 - Switch the form and inputs over to components to easily re-use the form elements (*later stage*)
         - Password reset
@@ -47,7 +47,7 @@
 - ### Admin - Department management
     - Department editor
         - Department name (changeable) (*done*)
-        - Manager | Select a member (with search) using a modal
+        - Manager | Select a member (with search) using a modal (*current*)
         - Member count | Total members of the department (*later also their function/role*) (*current*)
             - Should be added one every time someone gets added to the department, logic still needs to be figured out
         - Applications | On or off (checkbox/toggle)
@@ -64,7 +64,7 @@
     - Admin
         - Admin can change, edit and delete PSA's
 - ### Specifics
-    - Pagination
+    - Pagination (*done*)
         - Change the pagination so you can use both the user and department paginator at the same  time, see: (*done*)
         - [Laravel paginator docs](https://laravel.com/docs/10.x/pagination#multiple-paginator-instances-per-page)
         - This was stupid, it was just one function that had to be added to the paginate method (`withQueryString()`), but it works now :D
@@ -125,3 +125,8 @@
             - Logic
                 - The member count is not correct because the seeder currently just fakes a number, this should be converted into counting the users that are added to the department.
 
+- 14-08-2023
+    - Livewire update
+        - Added a search component to be able to add users to a department by opening a modal, searching for the user and selecting the user, the department id is currently set to 2, but this can be made dynamic when configuring the component to be used in the department and user editor.
+    - Fun stuff
+            - Added a flash message with Livewire, wow that was easy! Love it already!

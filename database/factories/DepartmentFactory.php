@@ -18,7 +18,7 @@ class DepartmentFactory extends Factory
     {
         return [
             'name' => fake()->company(),
-            'members' => fake()->numberBetween(0, 50),
+            'members' => 0,
             'applications' => fake()->boolean(),
             'manager_id' => \App\Models\User::factory()
         ];
@@ -29,6 +29,7 @@ class DepartmentFactory extends Factory
         return $this->afterCreating(function (\App\Models\Department $department) {
             $user = \App\Models\User::find($department->manager_id);
             $user->department_id = $department->id;
+            $department->members++;
             return $user->save();
         });
     }
