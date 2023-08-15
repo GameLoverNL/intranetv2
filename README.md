@@ -76,8 +76,12 @@
         - Link the user Discord account to the platform using the Socialite package
 
 - ### Docker containerization
-    - Postgres
+    All these images should be put into one `docker-compose` file to easily distribute and be able to setup a new website
+    - MariaDB
+        - Docker container command
+            - `docker run -d -p <xxxx>:<xxxx> -e MARIADB_ROOT_PASSWORD=<password> -e MARIADB_USER=<username> --name <docker_container_name> mariadb:<version>`
     - Caddy/Nginx/Apache
+    - Meilisearch
     - *Bitnami/laravel*
 
 ## Progress
@@ -130,3 +134,8 @@
         - Added a search component to be able to add users to a department by opening a modal, searching for the user and selecting the user, the department id is currently set to 2, but this can be made dynamic when configuring the component to be used in the department and user editor.
     - Fun stuff
             - Added a flash message with Livewire, wow that was easy! Love it already!
+
+- 15-08-2023
+    - Department Editor
+        - Livewire components
+            Changed the component to work correctly with the department editor, also changed the styling a bit, manager can now be searched and selected and it works like a charm, some small things still need to be done, these can be found in the files with `TODO` tags.
