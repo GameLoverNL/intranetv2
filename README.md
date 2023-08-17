@@ -139,3 +139,13 @@
     - Department Editor
         - Livewire components
             Changed the component to work correctly with the department editor, also changed the styling a bit, manager can now be searched and selected and it works like a charm, some small things still need to be done, these can be found in the files with `TODO` tags.
+
+- 17-08-2023
+    - User editor
+        - Livewire components
+            Started changing the component to be able to search for departments and add the user to a department. The `dd` function is returning the correct value but the text inside the blade view is not showing correctly. (*bug*)
+    - Department editor
+        - Livewire components
+            Works completely. You can select a manager and this is persisted inside the database. No issues for now, but will probably see some in a test session with others.
+    - Fun
+        Livewire's awesome, it just works. Easy to figure stuff out. Absolutely amazing! Have a nice day!

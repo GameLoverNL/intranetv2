@@ -1,4 +1,4 @@
-@props(['user'])
+@props(['user', 'departments' => \App\Models\Department::all()])
 
 <x-app-layout>
     <x-slot name="header">
@@ -29,12 +29,21 @@
                                         <input type="text" value="{{ old('name', $user->name) }}" class="p-3 dark:bg-gray-700 border-none rounded-xl block shadow-md dark:shadow-gray-800 dark:text-gray-200 dark:placeholder-gray-400" name="name" />
                                         <input type="text" value="{{ old('email', $user->email) }}" class="p-3 dark:bg-gray-700 border-none rounded-xl block shadow-md dark:shadow-gray-800 dark:text-gray-200 dark:placeholder-gray-400" name="email" />
                                     </div>
+
+
                                     <div>
                                         <button class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800" type="submit">Submit</button>
                                     </div>
                                     {{-- TODO: Livewire search department component should be used here :D --}}
-                                    </div>
-                                </form>
+                                </div>
+                            </form>
+                            <div class="p-2 m-2">
+                                <button class="w-full p-2 m-2 rounded-xl bg-gray-500 border"
+                                        x-data=""
+                                        x-on:click.prevent="$dispatch('open-modal', 'search_departments')">Select department
+                                </button>
+                            </div>
+                                <livewire:admin.user.search-department :user="$user" :department="$departments">
                             </div>
                         </div>
                     </div>

@@ -32,29 +32,28 @@
                                                 <input type="text" x-model="department_name"
                                                     value="{{ old('name', $department->name) }}"
                                                     class="p-3 dark:bg-gray-700 border-none rounded-xl block shadow-md dark:shadow-gray-800 dark:text-gray-200 dark:placeholder-gray-400"
-                                                    name="name" />
-                                                <div>
-                                                    <h5 class="text-md font-medium text-gray-300">Current manager:</h5>
-                                                    {{-- TODO: Page now has to be refreshed to see the new manager, this seems unnecesary --}}
-                                                    @if ($department->manager)
-                                                        <a class="text-gray-200 text-sm font-medium" href="{{ route('admin.user.show', $department->manager->id) }}">{{ $department->manager->name }}</a>
-                                                    @else
-                                                        <p class="text-gray-200 text-sm font-medium">No manager</p>
-                                                    @endif
-                                                </div>
+                                                    name="name"
+                                                />
                                                 {{-- ! TODO: Applications toggle (on/off), with a checkbox --}}
-                                                {{-- Manager selection --}}
-                                                <button class="w-full p-2 m-2 rounded-xl bg-gray-500 border mx-auto"
-                                                    x-data=""
-                                                    x-on:click.prevent="$dispatch('open-modal', 'search_users')">Select manager</button>
-                                                <livewire:admin.department.search-users :department="$department" />
+                                            </div>
+                                            <div class="p-2 m-2">
+                                                <h5 class="p-2 text-md text-gray-200 font-semibold">Current manager</h5>
+                                                <p class="text-gray-300 text-sm font-medium">{{ $department->manager->name }}</p>
+                                            </div>
+                                            {{-- Manager selection --}}
+                                            <div class="p-2 m-2">
+                                                <button class="w-full p-2 m-2 rounded-xl bg-gray-500 border"
+                                                        x-data=""
+                                                        x-on:click.prevent="$dispatch('open-modal', 'search_users')">Select manager
+                                                </button>
                                             </div>
                                             <div class="p-2 m-2">
                                                 <button
-                                                    class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800"
-                                                    type="submit">Submit</button>
+                                                class="p-2 m-2 w-full bg-gray-700 rounded-xl max-w-md text-gray-100 shadow-md shadow-gray-800"
+                                                type="submit">Submit</button>
                                             </div>
                                         </form>
+                                        <livewire:admin.department.search-users :department="$department" />
                                     </div>
                                 </div>
                                 {{-- Members --}}

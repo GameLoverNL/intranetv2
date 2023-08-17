@@ -21,10 +21,6 @@ use \App\Http\Controllers\DepartmentController;
 |
 */
 
-Route::get('/livewire', function () {
-    return view('test.main');
-});
-
 Route::get('/', function () {
     return view('welcome');
 });

@@ -14,9 +14,9 @@ class Department extends Model
 {
     use HasFactory, Searchable;
 
-    public function manager(): HasOne
+    public function manager(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function members($department)

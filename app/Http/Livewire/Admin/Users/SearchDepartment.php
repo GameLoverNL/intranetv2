@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Department;
+namespace App\Http\Livewire\Admin\Users;
 
 use Livewire\Component;
 
-class SearchUsers extends Component
+class SearchDepartment extends Component
 {
     public $search = '';
     public $user;
@@ -25,7 +25,7 @@ class SearchUsers extends Component
 
     public function render()
     {
-        return view('livewire.admin.department.search-users', [
+        return view('livewire.admin.users.search-department', [
             'users' => \App\Models\User::search($this->search)->paginate(10)
         ]);
     }
