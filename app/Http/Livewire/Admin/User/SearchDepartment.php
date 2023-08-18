@@ -14,9 +14,8 @@ class SearchDepartment extends Component
     {
         $user = \App\Models\User::find($userID);
         $user->department_id = $departmentID;
-        $user->save();
         $department = \App\Models\Department::find($user->department_id);
-        // dd($department);
+        $user->save();
         session()->flash('added', "Added $user->name to " . $department->name . "");
     }
 

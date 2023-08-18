@@ -143,9 +143,17 @@
 - 17-08-2023
     - User editor
         - Livewire components
-            Started changing the component to be able to search for departments and add the user to a department. The `dd` function is returning the correct value but the text inside the blade view is not showing correctly. (*bug*)
+            Started changing the component to be able to search for departments and add the user to a department. The `dd` function is returning the correct value but the text inside the blade view is not showing correctly.
     - Department editor
         - Livewire components
             Works completely. You can select a manager and this is persisted inside the database. No issues for now, but will probably see some in a test session with others.
     - Fun
         Livewire's awesome, it just works. Easy to figure stuff out. Absolutely amazing! Have a nice day!
+
+- 18-08-2023
+    - User editor
+        - Bugfix
+            There was an issue with displaying the user department name `$user->department->name` (`function`). I accidentally put the `manager_id` in the `User` model for the primary key for the `belongsTo` relationship. Now this is fixed.
+    - Progress notes
+        - Admin user/department editors
+            For this stage I'm quite happy with the result I got for the editors. They're working how they're intended to work and no further changes need to be made for now. In a later stage, there will be some more things added, like creating a new department, a new user and when the functionality is there; public service announcements.

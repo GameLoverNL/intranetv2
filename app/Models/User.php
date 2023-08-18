@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'manager_id');
+        return $this->belongsTo(Department::class);
     }
 }
