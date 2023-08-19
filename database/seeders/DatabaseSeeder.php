@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'jorianb@intranetv2.nl',
             'isAdmin' => 1,
         ])]);
+
+        \App\Models\Psa::factory(5)->create();
     }
 }

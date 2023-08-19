@@ -33,25 +33,28 @@
         - Form
             - Username (changeable) (*done*)
             - Email (changeable) (*done*)
-            - Department (select from list) (*current*)
-                - See progress notes for `14-08-2023` to see how this can be implemented
+            - Department (select from list) (*done*)
             - Create the form to edit user information and style it (*done*)
                 - Switch the form and inputs over to components to easily re-use the form elements (*later stage*)
-        - Password reset
+        - Password reset (*todo, later stage*)
             - Admins should be able to reset the password
                 - Send the user a magic link to set up their new password
-        - Deletion
+        - Deletion (*todo, later stage*)
             - Modal
                 - Bugs
                     - Modal is looping in foreach
 - ### Admin - Department management
     - Department editor
         - Department name (changeable) (*done*)
-        - Manager | Select a member (with search) using a modal (*current*)
-        - Member count | Total members of the department (*later also their function/role*) (*current*)
+        - Manager | Select a member (with search) using a modal (*done*)
+        - Member count | Total members of the department (*later also 1their function/role*) (*done, except for the increment*)
             - Should be added one every time someone gets added to the department, logic still needs to be figured out
-        - Applications | On or off (checkbox/toggle)
+        - Applications | On or off (checkbox/toggle) (*later stage*)
         - Optional: notify manager with an email that there have been made changes to the department
+
+- ### Admin - Controllers
+    - Controllers
+        The department and user controller should be put in an admin folder for better organization. Then the other controllers can go into other folders and the organization will still be alright.
 
 - ### Public service announcements
     - Base
@@ -157,3 +160,7 @@
     - Progress notes
         - Admin user/department editors
             For this stage I'm quite happy with the result I got for the editors. They're working how they're intended to work and no further changes need to be made for now. In a later stage, there will be some more things added, like creating a new department, a new user and when the functionality is there; public service announcements.
+
+- 19-08-2023
+    - Public service announcements
+        - Prepared the basic functionality, created the model, factory and migration and migrated the database. Also prepared the dashboard to display the posts but the controller still needs to be prepared.
