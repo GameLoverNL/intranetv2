@@ -164,3 +164,7 @@
 - 19-08-2023
     - Public service announcements
         - Prepared the basic functionality, created the model, factory and migration and migrated the database. Also prepared the dashboard to display the posts but the controller still needs to be prepared.
+
+- 12-09-2023
+  - Public service announcements
+    - Made the basic display for the announcements. It redirects to a page for the specific PSA to show the whole announcement. On the display page the maximum content is 256 characters.

@@ -1,0 +1,14 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    ports: 
+      - "3306:3306"
+    environment:
+      - "MARIADB_ROOT_USER=root"
+      - "MARIADB_ROOT_PASSWORD=root"
+  meilisearch:
+    image: getmeili/meilisearch:v1.3
+    ports:
+      - "7700:7700"
+    environment:
+      - "MEILI_MASTER_KEY=intranetv2"

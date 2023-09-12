@@ -26,7 +26,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', [
+        'psas' => \App\Models\Psa::all()
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -78,5 +80,9 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
         Route::delete('/{id}/destroy', 'destroy')->name('admin.department.destroy');
 
     });
+
+    Route::get('/psa/show/{id}', function($id) {
+        return \App\Models\Psa::find($id);
+    })->name('psa.show');
 });
 require __DIR__.'/auth.php';
