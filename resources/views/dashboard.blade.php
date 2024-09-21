@@ -9,26 +9,18 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 m-2 text-gray-300 text-center">
-                    <h3 class="font-semibold text-lg">{{ __('Public service announcements') }}</h3>
-                </div>
-                <div class="pb-4 text-gray-300 mx-auto text-center">
-                     @foreach ($psas as $psa)
-                        <div class="p-4 m-2 rounded-md border border-gray-400 max-w-3xl mx-auto">
-                            <h4 class="border-b border-b-gray-500 pb-2">{{ $psa->title }} | {{ $psa->user->name }}</h4>
-                            <div class="pt-4 p-2">
+            <div class="flex justify-center gap-4">
+                @foreach ($psas as $psa)
+                    {{-- @if ($psa->department == auth()->user()->department) --}}
+                        <div class="p-4 bg-gray-300 rounded-md">
+                            <h4 class="p-1 text-center text-lg font-medium border-b-2 border-b-gray-500">{{ $psa->title }} | {{ $psa->user->name }}</h4>
+                            <div class="pt-2 text-md max-w-md">
                                 {{ substr($psa->content, 0, 256)  }}
                             </div>
-                            <div class="border-t border-t-gray-500 p-2">
-
-                                <a href="{{ route('psa.show', ['id' => $psa->id])  }}">Read further</a>
-                            </div>
                         </div>
-                     @endforeach
-                    <div>
-                        {{-- {{ $psas->links() }} --}}
-                    </div>
+                    {{-- @endif --}}
+                @endforeach
+                <div class="p-2 m-2">
                 </div>
             </div>
         </div>

@@ -27,7 +27,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
-        'psas' => \App\Models\Psa::all()
+        'psas' => \App\Models\Psa::paginate(2)
+        // TODO: Get latest 2 records
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

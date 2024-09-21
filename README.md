@@ -1,18 +1,10 @@
 # Intranet V2 development
 
 ## Project information
-    
-- ### Author
-    - This project has been made by Jorian (me), you can find more about me on my [GitHub](https://github.com/GameLoverNL) page
-
-    
 - ### Why I made this
     For a lot of roleplaying communities (Roblox, FiveM and others) that are starting out, or are just looking for free things to make their roleplaying-experience be better, there aren't that much free tools or websites online that are offering what these servers need. I don't like paying for things like scripts and other software for a server or something else which I'm just doing for fun. I want to create something that a lot of people can work with, that's easy to use and understand, and configure to their own needs. I hope this project can offer just a little bit of the feel and functionality which you get when you pay for it, the only thing I want to change is that I just want to do it *for free*, and I hope people can enjoy.
 
 - ### Important notes
-    - #### Contact information
-        - You can join our [Discord]() server for any questions you might have about installation, usage or maybe you have some feedback or suggestions which can be added to improve the project, one important note on this; **this is made in my free time, and I do not guarantee any support or that I will add things**
-
     - #### Licensing
         - This project is licensed under the MIT license, you can read more about the license in the `LICENSE.md` file
 
@@ -39,10 +31,10 @@
         - Password reset (*todo, later stage*)
             - Admins should be able to reset the password
                 - Send the user a magic link to set up their new password
-        - Deletion (*todo, later stage*)
+        - Deletion
             - Modal
                 - Bugs
-                    - Modal is looping in foreach
+                    - Modal is looping in foreach (*fixed*)
 - ### Admin - Department management
     - Department editor
         - Department name (changeable) (*done*)
@@ -61,7 +53,7 @@
         - PSA model, migration and basic showing
             - Belongs to a user (user has many)
             - Only show PSA to department members (auth()->user()->department == $psa->department (which is a foreignID to the department_id))
-    - Usable functionality
+    - Usable functionality (*done*)
         - Create a PSA as a department manager (link to department table) using markdown syntax (spatie/markdown)
         - Edit and delete PSA
     - Admin
@@ -71,21 +63,6 @@
         - Change the pagination so you can use both the user and department paginator at the same  time, see: (*done*)
         - [Laravel paginator docs](https://laravel.com/docs/10.x/pagination#multiple-paginator-instances-per-page)
         - This was stupid, it was just one function that had to be added to the paginate method (`withQueryString()`), but it works now :D
-
-- ### Authorization
-    - Profile
-        - Link TeamSpeak identifier to intranet using TeamSpeak webquery
-    - Discord
-        - Link the user Discord account to the platform using the Socialite package
-
-- ### Docker containerization
-    All these images should be put into one `docker-compose` file to easily distribute and be able to setup a new website
-    - MariaDB
-        - Docker container command
-            - `docker run -d -p <xxxx>:<xxxx> -e MARIADB_ROOT_PASSWORD=<password> -e MARIADB_USER=<username> --name <docker_container_name> mariadb:<version>`
-    - Caddy/Nginx/Apache
-    - Meilisearch
-    - *Bitnami/laravel*
 
 ## Progress
 *This section will give a list of all the things that have been done with the date and commit message*
@@ -168,3 +145,9 @@
 - 12-09-2023
   - Public service announcements
     - Made the basic display for the announcements. It redirects to a page for the specific PSA to show the whole announcement. On the display page the maximum content is 256 characters.
+
+- 21-09-2024
+  - Public service announcements
+    - Restyled the card, it doesn't need another page to read it, 256 characters should be fine. You can only see the PSA's in your department (code is commented out, but does work. Commented since there is still a db factory / seeder issue)
+  - General
+    - Changed the `.env.example` file to make setting up the project a little easier (e.g. Meilisearch, SQLite)

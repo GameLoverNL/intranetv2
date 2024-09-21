@@ -17,8 +17,8 @@ class Psa extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function department(): HasOne
+    public function department(): BelongsTo
     {
-        return $this->hasOne(Department::class);
+        return $this->belongsTo(Department::class);
     }
 }
